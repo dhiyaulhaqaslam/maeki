@@ -119,102 +119,150 @@ export default function GIS() {
                   </a>
                </div>
 
+               {/* --- ganti blok lama dengan ini --- */}
                <div className="flex gap-8 rounded-2xl overflow-hidden h-[70vh]">
-                  <div className="bg-[#D9D9D9] h-min p-4 rounded-xl py-12 min-w-3/10">
-                     <div className="grid gap-3">
-                        <h3 className="text-center font-semibold text-black mb-2">
+                  {/* KIRI: dua kotak terpisah (stacked) */}
+                  <div className="flex flex-col gap-4 w-[28%]">
+                     {/* Kotak 1: Cari Status */}
+                     <div className="bg-[#D9D9D9] p-6 rounded-2xl">
+                        <h3 className="text-center font-semibold text-black mb-4">
                            Cari Status
                         </h3>
 
-                        {/* Provinsi */}
-                        <select
-                           className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
-                           defaultValue=""
-                        >
-                           <option value="" disabled>
-                              Pilih Provinsi
-                           </option>
-                           <option value="Sulawesi Selatan">
-                              Sulawesi Selatan
-                           </option>
-                           <option value="Jawa Barat">Jawa Barat</option>
-                           <option value="Bali">Bali</option>
-                        </select>
+                        <div className="grid gap-3">
+                           <input
+                              type="text"
+                              placeholder="Cari Situs..."
+                              className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
+                           />
 
-                        {/* Kabupaten / Kota */}
-                        <select
-                           className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
-                           defaultValue=""
-                        >
-                           <option value="" disabled>
-                              Pilih Kabupaten / Kota
-                           </option>
-                           <option value="Makassar">Makassar</option>
-                           <option value="Gowa">Gowa</option>
-                           <option value="Maros">Maros</option>
-                        </select>
+                           <select
+                              className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
+                              defaultValue=""
+                           >
+                              <option value="" disabled>
+                                 Pilih Provinsi
+                              </option>
+                              <option value="Sulawesi Selatan">
+                                 Sulawesi Selatan
+                              </option>
+                              <option value="Jawa Barat">Jawa Barat</option>
+                              <option value="Bali">Bali</option>
+                           </select>
 
-                        {/* Jenis Titik Kebudayaan */}
-                        <select
-                           className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
-                           defaultValue=""
-                        >
-                           <option value="" disabled>
-                              Pilih Jenis Titik Kebudayaan
-                           </option>
-                           <option value="Museum">Museum</option>
-                           <option value="Cagar Budaya">Cagar Budaya</option>
-                           <option value="WBTB">WBTB</option>
-                           <option value="Komunitas Budaya">
-                              Komunitas Budaya
-                           </option>
-                        </select>
+                           <select
+                              className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
+                              defaultValue=""
+                           >
+                              <option value="" disabled>
+                                 Pilih Kabupaten / Kota
+                              </option>
+                              <option value="Makassar">Makassar</option>
+                              <option value="Gowa">Gowa</option>
+                              <option value="Maros">Maros</option>
+                           </select>
 
-                        <div className="text-center mt-2">
-                           <button className="bg-[#9C1D2A] w-full px-12 py-3 text-center rounded-2xl text-white font-semibold hover:bg-[#7e1721] transition-all">
+                           <select
+                              className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
+                              defaultValue=""
+                           >
+                              <option value="" disabled>
+                                 Pilih Jenis Titik Kebudayaan
+                              </option>
+                              <option value="Museum">Museum</option>
+                              <option value="Cagar Budaya">Cagar Budaya</option>
+                              <option value="WBTB">WBTB</option>
+                              <option value="Komunitas Budaya">
+                                 Komunitas Budaya
+                              </option>
+                           </select>
+
+                           <button className="bg-[#9C1D2A] w-full py-3 rounded-2xl text-white font-semibold hover:bg-[#7e1721] transition-all">
                               Cari
                            </button>
                         </div>
                      </div>
+
+                     {/* Kotak 2: Statistik Data (terpisah) */}
+                     <div className="bg-[#D9D9D9] p-6 rounded-2xl shadow-md">
+                        <h4 className="text-center text-lg font-semibold text-black mb-4">
+                           Statistik Data
+                        </h4>
+
+                        <div className="grid gap-3">
+                           <div className="flex justify-between items-center border-b pb-2" text-white>
+                              <span className="text-black font-medium">
+                                 Jumlah Provinsi
+                              </span>
+                              <span className="font-bold text-black">
+                                 34
+                              </span>
+                           </div>
+
+                           <div className="flex justify-between items-center border-b pb-2">
+                              <span className="text-black font-medium">
+                                 Jumlah Kabupaten/Kota
+                              </span>
+                              <span className="font-bold text-black">
+                                 514
+                              </span>
+                           </div>
+
+                           {/* contoh tambahan metrik (opsional) */}
+                           <div className="flex justify-between items-center pt-2">
+                              <span className="text-black font-medium">
+                                 Total Titik Budaya
+                              </span>
+                              <span className="font-bold text-black">
+                                 200
+                              </span>
+                           </div>
+                        </div>
+                     </div>
                   </div>
 
-                  <MapContainer
-                     center={[-5.15, 119.45]}
-                     zoom={12}
-                     className="w-full h-full max-h-[560px]"
-                     scrollWheelZoom
-                  >
-                     <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                     />
-
-                     <FitBoundsForGeoJSON
-                        data={makassar as FeatureCollection[]}
-                     />
-
-                     {(makassar as FeatureCollection[]).map((data, i) => (
-                        <GeoJSON
-                           key={i}
-                           data={data}
-                           style={() => ({
-                              color: "red",
-                              weight: 1,
-                              fillColor: "gold",
-                              fillOpacity: 0.3,
-                           })}
-                           onEachFeature={(
-                              feature: Feature,
-                              layer: L.Layer
-                           ) => {
-                              const props: any = feature.properties;
-                              const name =
-                                 props?.village || props?.district || "Wilayah";
-                              layer.bindPopup(`<b>${name}</b>`);
-                           }}
+                  {/* KANAN: Peta */}
+                  <div className="flex-1 rounded-2xl overflow-hidden shadow-lg">
+                     <MapContainer
+                        center={[-5.15, 119.45]}
+                        zoom={12}
+                        className="w-full h-full"
+                        scrollWheelZoom
+                     >
+                        <TileLayer
+                           attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+                           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-                     ))}
-                  </MapContainer>
+
+                        <FitBoundsForGeoJSON
+                           data={makassar as FeatureCollection[]}
+                        />
+
+                        {(makassar as FeatureCollection[]).map((data, i) => (
+                           <GeoJSON
+                              key={i}
+                              data={data}
+                              style={() => ({
+                                 color: "red",
+                                 weight: 1,
+                                 fillColor: "",
+                                 fillOpacity: 0.3,
+                              })}
+                              onEachFeature={(
+                                 feature: Feature,
+                                 layer: L.Layer
+                              ) => {
+                                 const props: any = feature.properties;
+                                 const name =
+                                    props?.village ||
+                                    props?.district ||
+                                    "Wilayah";
+                                 layer.bindPopup(`<b>${name}</b>`);
+                              }}
+                           />
+                        ))}
+                     </MapContainer>
+                  </div>
                </div>
             </div>
          </section>
