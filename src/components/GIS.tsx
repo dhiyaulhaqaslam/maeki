@@ -6,6 +6,7 @@ import L from "leaflet"; // ✅ Import Leaflet global
 import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import type { Feature, FeatureCollection } from "geojson";
+import { Landmark, Building, Globe, Users } from "lucide-react";
 
 function FitBoundsForGeoJSON({ data }: { data: FeatureCollection[] }) {
    const map = useMap();
@@ -63,8 +64,75 @@ export default function GIS() {
             id="gis-map"
             className="relative flex flex-col items-center justify-center py-12 bg-gray-900"
          >
-            <div className="w-[92%] max-w-7xl">
-               <div className="rounded-2xl overflow-hidden shadow-xl h-[70vh] bg-white/5 border border-gray-800">
+            <div className="grid gap-12 w-[92%] max-w-7xl">
+               <div className="w-full grid grid-cols-4 gap-4">
+                  <a
+                     href="#"
+                     className="bg-[#C99432] p-4 rounded-2xl font-semibold flex flex-col justify-between shadow-lg hover:bg-[#d4a645] transition-all"
+                  >
+                     <div className="flex justify-between items-center gap-3">
+                        <Landmark size={36} />
+                        <span>Total Museum</span>
+                     </div>
+                     <span className="block font-bold text-3xl text-end">200</span>
+                  </a>
+
+                  <a
+                     href="#"
+                     className="bg-[#C99432] p-4 rounded-2xl font-semibold flex flex-col justify-between shadow-lg hover:bg-[#d4a645] transition-all"
+                  >
+                     <div className="flex justify-between items-center gap-3">
+                        <Building size={36} />
+                        <span>Total Cagar Budaya</span>
+                     </div>
+                     <span className="block font-bold text-3xl text-end">200</span>
+                  </a>
+
+                  <a
+                     href="#"
+                     className="bg-[#C99432] p-4 rounded-2xl font-semibold flex flex-col justify-between shadow-lg hover:bg-[#d4a645] transition-all"
+                  >
+                     <div className="flex justify-between items-center gap-3">
+                        <Globe size={36} />
+                        <span>Total WBTB</span>
+                     </div>
+                     <span className="block font-bold text-3xl text-end">200</span>
+                  </a>
+
+                  <a
+                     href="#"
+                     className="bg-[#C99432] p-4 rounded-2xl font-semibold flex flex-col justify-between shadow-lg hover:bg-[#d4a645] transition-all"
+                  >
+                     <div className="flex justify-between items-center gap-3">
+                        <Users size={36} />
+                        <span>Total Komunitas Budaya</span>
+                     </div>
+                     <span className="block font-bold text-3xl text-end">200</span>
+                  </a>
+               </div>
+
+               <div className="flex gap-8 rounded-2xl overflow-hidden shadow-xl h-[70vh] bg-white/5 border border-gray-800">
+                  <div className="bg-[#D9D9D9] h-min p-4 rounded-xl py-12">
+                     <div className="grid gap-2">
+                        <a className="bg-white text-black px-12 w-full min-w-max py-3 text-center rounded-2xl">
+                           Cari Stus
+                        </a>
+                        <a className="bg-white text-black px-12 w-full min-w-max py-3 text-center rounded-2xl">
+                           Provinsi
+                        </a>
+                        <a className="bg-white text-black px-12 w-full min-w-max py-3 text-center rounded-2xl">
+                           Kabupaten/Kota
+                        </a>
+                        <a className="bg-white text-black px-12 w-full min-w-max py-3 text-center rounded-2xl">
+                           Jenis Titik Kebudayaan
+                        </a>
+                        <div className="text-center">
+                           <button className="bg-[#9C1D2A] w-full px-12 min-w-max py-3 text-center rounded-2xl">
+                              Cari
+                           </button>
+                        </div>
+                     </div>
+                  </div>
                   <MapContainer
                      center={[-5.15, 119.45]}
                      zoom={12}
