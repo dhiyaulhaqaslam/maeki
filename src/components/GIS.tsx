@@ -1,4 +1,30 @@
-import { motion } from "framer-motion"
+// src/components/GIS.tsx
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { makassar } from "../data";
+import L from "leaflet"; // ✅ Import Leaflet global
+import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import type { Feature, FeatureCollection } from "geojson";
+
+function FitBoundsForGeoJSON({ data }: { data: FeatureCollection[] }) {
+   const map = useMap();
+
+   useEffect(() => {
+      try {
+         const layers: L.GeoJSON[] = data.map((d) =>
+            L.geoJSON(d as GeoJSON.FeatureCollection)
+         );
+         const group = L.featureGroup(layers);
+         const bounds = group.getBounds();
+         if (bounds.isValid()) map.fitBounds(bounds, { padding: [20, 20] });
+      } catch (e) {
+         console.warn("fitBounds error", e);
+      }
+   }, [data, map]);
+
+   return null;
+}
 
 export default function GIS() {
    return (
@@ -6,42 +32,78 @@ export default function GIS() {
          {/* HERO SECTION */}
          <section
             id="hero"
-            className="relative flex flex-col items-center justify-center min-h-[90vh] overflow-hidden text-white bg-gradient-to-b from-black via-gray-900 to-black"
+            className="relative flex flex-col items-center justify-center min-h-[40vh] overflow-hidden text-white bg-gradient-to-b from-black via-gray-900 to-black"
          >
-            {/* Background Image */}
             <motion.div
-               initial={{ opacity: 0, scale: 1.1 }}
+               initial={{ opacity: 0, scale: 1.02 }}
                animate={{ opacity: 1, scale: 1 }}
-               transition={{ duration: 1.5, ease: "easeOut" }}
-               className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2400&q=80')] bg-cover bg-center opacity-40"
+               transition={{ duration: 1.2, ease: "easeOut" }}
+               className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2400&q=80')] bg-cover bg-center opacity-30"
             />
+            <div className="absolute inset-0 bg-black/50" />
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/60" />
-
-            {/* Content */}
             <motion.div
                initial={{ opacity: 0, y: 40 }}
                animate={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.3, duration: 1 }}
-               className="relative z-10 text-center px-6"
+               transition={{ delay: 0.2, duration: 0.9 }}
+               className="relative z-10 text-center px-6 py-12"
             >
-               <h1 className="text-5xl md:text-6xl font-bold mb-4">
+               <h1 className="text-4xl md:text-5xl font-bold mb-2">
                   Sistem Informasi Geospasial
                </h1>
                <p className="max-w-2xl mx-auto text-gray-300 text-lg">
                   Menelusuri kekayaan adat dan budaya melalui peta interaktif
                   yang menghubungkan masyarakat dengan warisan nusantara.
                </p>
-
-               <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="mt-8 px-8 py-3 bg-yellow-400 text-black font-semibold rounded-full shadow-lg hover:bg-yellow-300 transition-all"
-               >
-                  Lihat Peta
-               </motion.button>
             </motion.div>
+         </section>
+
+         {/* MAP SECTION */}
+         <section
+            id="gis-map"
+            className="relative flex flex-col items-center justify-center py-12 bg-gray-900"
+         >
+            <div className="w-[92%] max-w-7xl">
+               <div className="rounded-2xl overflow-hidden shadow-xl h-[70vh] bg-white/5 border border-gray-800">
+                  <MapContainer
+                     center={[-5.15, 119.45]}
+                     zoom={12}
+                     className="w-full h-full"
+                     scrollWheelZoom
+                  >
+                     <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                     />
+
+                     <FitBoundsForGeoJSON
+                        data={makassar as FeatureCollection[]}
+                     />
+
+                     {(makassar as FeatureCollection[]).map((data, i) => (
+                        <GeoJSON
+                           key={i}
+                           data={data}
+                           style={() => ({
+                              color: "red",
+                              weight: 1,
+                              fillColor: "gold",
+                              fillOpacity: 0.3,
+                           })}
+                           onEachFeature={(
+                              feature: Feature,
+                              layer: L.Layer
+                           ) => {
+                              const props: any = feature.properties;
+                              const name =
+                                 props?.village || props?.district || "Wilayah";
+                              layer.bindPopup(`<b>${name}</b>`);
+                           }}
+                        />
+                     ))}
+                  </MapContainer>
+               </div>
+            </div>
          </section>
 
          {/* ABOUT SECTION */}
@@ -61,35 +123,10 @@ export default function GIS() {
                   transition={{ delay: 0.2, duration: 1 }}
                   className="max-w-3xl mx-auto text-lg text-gray-400 leading-relaxed"
                >
-                  Halaman ini dirancang untuk menampilkan data budaya dan
-                  potensi daerah secara interaktif menggunakan peta geospasial.
-                  Dengan pendekatan visual dan teknologi digital, pengguna dapat
-                  menjelajahi informasi adat, batas wilayah, serta sebaran
-                  budaya secara intuitif.
+                  Halaman ini menampilkan batas wilayah dari dataset GeoJSON.
+                  Klik tiap wilayah untuk melihat nama kelurahan atau kecamatan.
                </motion.p>
             </div>
-         </section>
-
-         {/* MAP SECTION (Placeholder - bisa diganti dengan peta Leaflet/Mapbox nanti) */}
-         <section className="relative py-32 bg-gray-950 text-center text-gray-400">
-            <motion.div
-               initial={{ opacity: 0 }}
-               whileInView={{ opacity: 1 }}
-               transition={{ duration: 1 }}
-               className="max-w-5xl mx-auto px-6"
-            >
-               <h2 className="text-3xl font-semibold mb-6 text-white">
-                  Peta Interaktif (Segera Hadir)
-               </h2>
-               <div className="rounded-2xl overflow-hidden border border-gray-700 shadow-2xl">
-                  <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-12">
-                     <p className="text-gray-500">
-                        Komponen peta (seperti Leaflet atau Mapbox) akan
-                        ditampilkan di sini.
-                     </p>
-                  </div>
-               </div>
-            </motion.div>
          </section>
       </>
    );

@@ -18,7 +18,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="min-h-screen bg-black text-white overflow-x-hidden"
+            className="min-h-screen text-white overflow-x-hidden"
          >
             {children}
          </motion.main>

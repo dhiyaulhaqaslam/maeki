@@ -31,7 +31,7 @@ export default function Navbar() {
 
                 {/* Desktop Nav */}
                 <div className="hidden md:flex gap-8 font-medium">
-                    <a href="#hero" className="hover:text-yellow-400 transition">Beranda</a>
+                    <a href="/" className="hover:text-yellow-400 transition">Beranda</a>
                     <a href="GIS" className="hover:text-yellow-400 transition">GIS</a>
                     <a href="#news" className="hover:text-yellow-400 transition">News</a>
                     <a href="#event" className="hover:text-yellow-400 transition">Event</a>
@@ -43,7 +43,7 @@ export default function Navbar() {
                     className="md:hidden focus:outline-none"
                 >
                     <svg
-                        xmlns="http://www.w3.org/2000/svg"=
+                        xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth={2}
