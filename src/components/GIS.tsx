@@ -33,7 +33,7 @@ export default function GIS() {
          {/* HERO SECTION */}
          <section
             id="hero"
-            className="relative flex flex-col items-center justify-center min-h-[40vh] overflow-hidden text-white bg-gradient-to-b from-black via-gray-900 to-black"
+            className="relative flex flex-col items-center justify-center min-h-[40vh] overflow-hidden text-white"
          >
             <motion.div
                initial={{ opacity: 0, scale: 1.02 }}
@@ -62,7 +62,7 @@ export default function GIS() {
          {/* MAP SECTION */}
          <section
             id="gis-map"
-            className="relative flex flex-col items-center justify-center py-12 bg-gray-900"
+            className="relative flex flex-col items-center justify-center py-12"
          >
             <div className="grid gap-12 w-[92%] max-w-7xl">
                <div className="w-full grid grid-cols-4 gap-4">
@@ -74,7 +74,9 @@ export default function GIS() {
                         <Landmark size={36} />
                         <span>Total Museum</span>
                      </div>
-                     <span className="block font-bold text-3xl text-end">200</span>
+                     <span className="block font-bold text-3xl text-end">
+                        200
+                     </span>
                   </a>
 
                   <a
@@ -85,7 +87,9 @@ export default function GIS() {
                         <Building size={36} />
                         <span>Total Cagar Budaya</span>
                      </div>
-                     <span className="block font-bold text-3xl text-end">200</span>
+                     <span className="block font-bold text-3xl text-end">
+                        200
+                     </span>
                   </a>
 
                   <a
@@ -96,7 +100,9 @@ export default function GIS() {
                         <Globe size={36} />
                         <span>Total WBTB</span>
                      </div>
-                     <span className="block font-bold text-3xl text-end">200</span>
+                     <span className="block font-bold text-3xl text-end">
+                        200
+                     </span>
                   </a>
 
                   <a
@@ -107,36 +113,75 @@ export default function GIS() {
                         <Users size={36} />
                         <span>Total Komunitas Budaya</span>
                      </div>
-                     <span className="block font-bold text-3xl text-end">200</span>
+                     <span className="block font-bold text-3xl text-end">
+                        200
+                     </span>
                   </a>
                </div>
 
-               <div className="flex gap-8 rounded-2xl overflow-hidden shadow-xl h-[70vh] bg-white/5 border border-gray-800">
-                  <div className="bg-[#D9D9D9] h-min p-4 rounded-xl py-12">
-                     <div className="grid gap-2">
-                        <a className="bg-white text-black px-12 w-full min-w-max py-3 text-center rounded-2xl">
-                           Cari Stus
-                        </a>
-                        <a className="bg-white text-black px-12 w-full min-w-max py-3 text-center rounded-2xl">
-                           Provinsi
-                        </a>
-                        <a className="bg-white text-black px-12 w-full min-w-max py-3 text-center rounded-2xl">
-                           Kabupaten/Kota
-                        </a>
-                        <a className="bg-white text-black px-12 w-full min-w-max py-3 text-center rounded-2xl">
-                           Jenis Titik Kebudayaan
-                        </a>
-                        <div className="text-center">
-                           <button className="bg-[#9C1D2A] w-full px-12 min-w-max py-3 text-center rounded-2xl">
+               <div className="flex gap-8 rounded-2xl overflow-hidden h-[70vh]">
+                  <div className="bg-[#D9D9D9] h-min p-4 rounded-xl py-12 min-w-3/10">
+                     <div className="grid gap-3">
+                        <h3 className="text-center font-semibold text-black mb-2">
+                           Cari Status
+                        </h3>
+
+                        {/* Provinsi */}
+                        <select
+                           className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
+                           defaultValue=""
+                        >
+                           <option value="" disabled>
+                              Pilih Provinsi
+                           </option>
+                           <option value="Sulawesi Selatan">
+                              Sulawesi Selatan
+                           </option>
+                           <option value="Jawa Barat">Jawa Barat</option>
+                           <option value="Bali">Bali</option>
+                        </select>
+
+                        {/* Kabupaten / Kota */}
+                        <select
+                           className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
+                           defaultValue=""
+                        >
+                           <option value="" disabled>
+                              Pilih Kabupaten / Kota
+                           </option>
+                           <option value="Makassar">Makassar</option>
+                           <option value="Gowa">Gowa</option>
+                           <option value="Maros">Maros</option>
+                        </select>
+
+                        {/* Jenis Titik Kebudayaan */}
+                        <select
+                           className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
+                           defaultValue=""
+                        >
+                           <option value="" disabled>
+                              Pilih Jenis Titik Kebudayaan
+                           </option>
+                           <option value="Museum">Museum</option>
+                           <option value="Cagar Budaya">Cagar Budaya</option>
+                           <option value="WBTB">WBTB</option>
+                           <option value="Komunitas Budaya">
+                              Komunitas Budaya
+                           </option>
+                        </select>
+
+                        <div className="text-center mt-2">
+                           <button className="bg-[#9C1D2A] w-full px-12 py-3 text-center rounded-2xl text-white font-semibold hover:bg-[#7e1721] transition-all">
                               Cari
                            </button>
                         </div>
                      </div>
                   </div>
+
                   <MapContainer
                      center={[-5.15, 119.45]}
                      zoom={12}
-                     className="w-full h-full"
+                     className="w-full h-full max-h-[560px]"
                      scrollWheelZoom
                   >
                      <TileLayer
