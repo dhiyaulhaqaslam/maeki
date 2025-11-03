@@ -10,6 +10,7 @@ import wayangA from "./assets/wayangA.png";
 import GISMap from "./components/ui/GISMap";
 import { motion } from "framer-motion";
 import { newsData } from "./data";
+import CultureCarousel from "./components/ui/CultureCarousel";
 
 export default function Welcome() {
    const kapalRef = useRef<HTMLImageElement | null>(null);
@@ -88,7 +89,9 @@ export default function Welcome() {
       <>
          {/* Hero Section */}
          <section className="relative h-screen overflow-hidden bg-black">
-            <div className="absolute inset-0 bg-black/40 overflow-hidden" />
+            <div className="absolute inset-0 bg-black/20 overflow-hidden" />
+
+            <CultureCarousel />
 
             <div className="relative flex h-full flex-col items-center justify-center text-white">
                <h1 className="z-10 text-center text-5xl font-bold drop-shadow-lg md:text-6xl">
