@@ -7,6 +7,7 @@ import awan5 from "./assets/awan5.png";
 import awan6 from "./assets/awan6.png";
 import wayang from "./assets/wayang.png";
 import wayangA from "./assets/wayangA.png";
+import GISMap from "./components/ui/GISMap";
 
 export default function Welcome() {
    const kapalRef = useRef<HTMLImageElement | null>(null);
@@ -72,9 +73,8 @@ export default function Welcome() {
          awanRefs.current.forEach((el, i) => {
             if (!el) return;
             const { speed, direction } = awanList[i];
-            el.style.transform = `translateX(${
-               scrollY * speed * direction
-            }px) translateY(${scrollY * speed}px)`;
+            el.style.transform = `translateX(${scrollY * speed * direction
+               }px) translateY(${scrollY * speed}px)`;
          });
       };
 
@@ -86,11 +86,11 @@ export default function Welcome() {
       <>
          {/* Hero Section */}
          <section className="relative h-screen overflow-hidden bg-black">
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/40 overflow-hidden" />
 
             <div className="relative flex h-full flex-col items-center justify-center text-white">
                <h1 className="z-10 text-center text-5xl font-bold drop-shadow-lg md:text-6xl">
-                  Semakin Dalam, Semakin Kaya
+                  Ini Section Hero
                </h1>
             </div>
          </section>
@@ -107,11 +107,10 @@ export default function Welcome() {
             />
          ))}
 
-         {/* Section berikutnya */}
-         <section className="flex h-screen items-center justify-center text-white">
-            <p className="text-xl font-medium drop-shadow-md md:text-2xl">
-               Scroll terus untuk menjelajahi budaya Indonesia 🌊
-            </p>
+         {/* GIS */}
+         <section className="relative bg-gray-900 text-white py-12">
+            <div className="">
+               <GISMap /></div>
          </section>
       </>
    );

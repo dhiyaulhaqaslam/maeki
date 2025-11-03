@@ -20,7 +20,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
             transition={{ duration: 0.6 }}
             className="min-h-screen text-white overflow-x-hidden"
          >
-            {children}
+            {children}  
          </motion.main>
 
          {/* Footer di bawah */}
