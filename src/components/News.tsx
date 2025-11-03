@@ -1,49 +1,8 @@
 import { motion } from "framer-motion";
+import { newsData } from "../data"
 
 export default function GIS() {
-  const newsData = [
-    {
-      id: 1,
-      title: "Tradisi Maulid di Sulawesi",
-      author: "Ilham Furqan",
-      views: 245,
-      description:
-        "Perayaan Maulid Nabi di Sulawesi dikenal dengan tradisi unik seperti makan bersama dan parade hias telur.",
-      image:
-        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      id: 2,
-      title: "Kain Tenun Toraja Mendunia",
-      author: "Siti Rahma",
-      views: 180,
-      description:
-        "Kain tenun khas Toraja kini mulai diminati pasar internasional karena motifnya yang kaya makna budaya.",
-      image:
-        "https://images.unsplash.com/photo-1602526218679-3b19b6b8b80b?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      id: 3,
-      title: "Seni Ukir Jepara Kembali Diminati",
-      author: "Ahmad Fauzi",
-      views: 392,
-      description:
-        "Kerajinan ukir kayu Jepara kini mengalami kebangkitan seiring meningkatnya minat terhadap produk lokal.",
-      image:
-        "https://images.unsplash.com/photo-1578301978018-3005759f48d4?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      id: 4,
-      title: "Wayang Kulit Modern",
-      author: "Dewi Kartika",
-      views: 312,
-      description:
-        "Para seniman kini memadukan teknologi digital dengan wayang kulit, menciptakan pertunjukan yang menarik generasi muda.",
-      image:
-        "https://images.unsplash.com/photo-1597055181241-fb7d2b27c2b8?auto=format&fit=crop&w=1200&q=80",
-    },
-  ];
-
+  
   return (
     <>
       {/* HERO SECTION */}
