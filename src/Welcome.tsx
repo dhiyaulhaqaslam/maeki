@@ -11,8 +11,8 @@ import wayangA from "./assets/wayangA.png";
 import GISMap from "./components/ui/GISMap";
 import CultureCarousel from "./components/ui/CultureCarousel";
 import { motion } from "framer-motion";
-import { newsData } from "./data";
 import poster from "./assets/bg/event1.png";
+import NewsCard from "./components/ui/NewsCard";
 
 export default function Welcome() {
    const kapalRef = useRef<HTMLImageElement | null>(null);
@@ -79,41 +79,7 @@ export default function Welcome() {
                <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
                   News
                </h2>
-               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                  {newsData.map((news) => (
-                     <motion.div
-                        key={news.id}
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
-                     >
-                        <img
-                           src={news.image}
-                           alt={news.title}
-                           className="w-full h-40 object-cover"
-                        />
-                        <div className="p-4">
-                           <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                              {news.title}
-                           </h3>
-                           <p className="text-sm text-gray-600 mb-3 line-clamp-3">
-                              {news.description}
-                           </p>
-                           <a
-                              href="#"
-                              className="text-blue-600 text-sm font-medium hover:underline"
-                           >
-                              Lihat selengkapnya →
-                           </a>
-                           <p className="text-sm text-gray-500 mb-2">
-                              Oleh {news.author} · {news.views}x dilihat
-                           </p>
-                        </div>
-                     </motion.div>
-                  ))}
-               </div>
+               <NewsCard />
             </div>
          </section>
 

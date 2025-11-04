@@ -1,31 +1,8 @@
 // src/components/GIS.tsx
-import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { makassar } from "../data";
-import L from "leaflet"; // ✅ Import Leaflet global
-import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import type { Feature, FeatureCollection } from "geojson";
 import { Landmark, Building, Globe, Users } from "lucide-react";
-
-function FitBoundsForGeoJSON({ data }: { data: FeatureCollection[] }) {
-   const map = useMap();
-
-   useEffect(() => {
-      try {
-         const layers: L.GeoJSON[] = data.map((d) =>
-            L.geoJSON(d as GeoJSON.FeatureCollection)
-         );
-         const group = L.featureGroup(layers);
-         const bounds = group.getBounds();
-         if (bounds.isValid()) map.fitBounds(bounds, { padding: [20, 20] });
-      } catch (e) {
-         console.warn("fitBounds error", e);
-      }
-   }, [data, map]);
-
-   return null;
-}
+import GISMap from "./ui/GISMap";
 
 export default function GIS() {
    return (
@@ -223,45 +200,7 @@ export default function GIS() {
 
                   {/* KANAN: Peta */}
                   <div className="flex-1 rounded-2xl overflow-hidden">
-                     <MapContainer
-                        center={[-5.15, 119.45]}
-                        zoom={12}
-                        className="w-full h-full max-h-[600px] z-0"
-                        scrollWheelZoom
-                     >
-                        <TileLayer
-                           attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-                           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-
-                        <FitBoundsForGeoJSON
-                           data={makassar as FeatureCollection[]}
-                        />
-
-                        {(makassar as FeatureCollection[]).map((data, i) => (
-                           <GeoJSON
-                              key={i}
-                              data={data}
-                              style={() => ({
-                                 color: "red",
-                                 weight: 1,
-                                 fillColor: "",
-                                 fillOpacity: 0.3,
-                              })}
-                              onEachFeature={(
-                                 feature: Feature,
-                                 layer: L.Layer
-                              ) => {
-                                 const props: any = feature.properties;
-                                 const name =
-                                    props?.village ||
-                                    props?.district ||
-                                    "Wilayah";
-                                 layer.bindPopup(`<b>${name}</b>`);
-                              }}
-                           />
-                        ))}
-                     </MapContainer>
+                     <GISMap />
                   </div>
                </div>
             </div>
