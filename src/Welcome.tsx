@@ -97,7 +97,7 @@ export default function Welcome() {
                         transition={{ duration: 0.3 }}
                         className="rounded-2xl overflow-hidden transition"
                      >
-                        <div className="relative w-full aspect-[16/9]">
+                        <div className="relative w-full aspect-video">
                            <img
                               src={poster}
                               alt={`Event ${i}`}

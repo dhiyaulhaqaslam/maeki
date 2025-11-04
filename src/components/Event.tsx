@@ -66,7 +66,7 @@ export default function Event() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2400&q=80')] bg-cover bg-center opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/50 to-black/80" />
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -85,7 +85,7 @@ export default function Event() {
       </section>
 
       {/* EVENT CONTENT */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 bg-linear-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6 grid gap-12">
           {/* GRID ATAS */}
           <div className="grid grid-cols-1 md:grid-cols-7 gap-6">
@@ -128,7 +128,7 @@ export default function Event() {
               viewport={{ once: true }}
               className="md:col-span-4 bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col"
             >
-              <div className="relative w-full aspect-[16/9]">
+              <div className="relative w-full aspect-video">
                 {/* IMAGE: parallax / scale on hover */}
                 <motion.img
                   src={event1}
@@ -142,7 +142,7 @@ export default function Event() {
 
                 {/* VIGNETTE + GRADIENT untuk kontras */}
                 <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/50 via-black/20 to-transparent" />
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,0,0,0.35),transparent_40%)]" />
                 </div>
 
@@ -202,7 +202,7 @@ export default function Event() {
                     <motion.button
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.98 }}
-                      className="ml-auto bg-gradient-to-r from-[#B91C1C] to-[#FB923C] text-white text-sm font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition"
+                      className="ml-auto bg-linear-to-r from-[#B91C1C] to-[#FB923C] text-white text-sm font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition"
                     >
                       Lihat Detail
                     </motion.button>
@@ -213,7 +213,7 @@ export default function Event() {
               {/* FOOTER INFO: subtle strip for quick glance */}
               <div className="p-4 bg-white flex flex-wrap items-center justify-between gap-3 border-t border-gray-100">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-md bg-gradient-to-tr from-[#FDE68A] to-[#FCA311] flex items-center justify-center text-sm font-bold text-[#5C1A02]">
+                  <div className="w-10 h-10 rounded-md bg-linear-to-tr from-[#FDE68A] to-[#FCA311] flex items-center justify-center text-sm font-bold text-[#5C1A02]">
                     {new Date(events[0].date).getDate() || "12"}
                   </div>
                   <div>
@@ -259,7 +259,7 @@ export default function Event() {
                     alt={event.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   <span className="absolute top-3 left-3 bg-white/80 backdrop-blur-md text-gray-800 text-xs font-semibold px-3 py-1 rounded-full">
                     {event.date}
                   </span>
