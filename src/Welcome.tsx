@@ -47,26 +47,6 @@ export default function Welcome() {
    }, []);
 
    // === ANIMASI TEKS HERO ===
-   const containerVariants: Variants = {
-      hidden: { opacity: 0 },
-      visible: {
-         opacity: 1,
-         transition: {
-            staggerChildren: 0.05,
-            delayChildren: 0.3,
-         },
-      },
-   };
-
-   const letterVariants: Variants = {
-      hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
-      visible: {
-         opacity: 1,
-         y: 0,
-         filter: "blur(0px)",
-         transition: { duration: 0.35, ease: "easeOut" as const },
-      },
-   };
 
    const Hero = () => (
       <section className="relative h-screen overflow-hidden">
