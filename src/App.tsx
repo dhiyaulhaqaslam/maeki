@@ -4,6 +4,7 @@ import MainLayout from "./layouts/MainLayout";
 import Welcome from "./Welcome";
 import GIS from "./components/GIS";
 import News from "./components/News";
+import Event from "./components/Event";
 
 export default function App() {
   // App berisi Routes; kita bungkus setiap halaman dengan MainLayout
@@ -30,6 +31,14 @@ export default function App() {
         element={
           <MainLayout>
             <News />
+          </MainLayout>
+        }
+      />
+      <Route
+        path="/event"
+        element={
+          <MainLayout>
+            <Event />
           </MainLayout>
         }
       />

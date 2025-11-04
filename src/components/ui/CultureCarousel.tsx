@@ -97,7 +97,7 @@ export default function CultureCarousel() {
             </div>
 
             {/* Overlay gradasi agar lebih sinematik */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none" />
+            <div className="absolute inset-0 pointer-events-none" />
         </div>
     );
 }

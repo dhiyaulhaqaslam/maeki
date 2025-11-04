@@ -33,7 +33,7 @@ export default function GIS() {
          {/* HERO SECTION */}
          <section
             id="hero"
-            className="relative flex flex-col items-center justify-center min-h-[40vh] overflow-hidden text-white"
+            className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-white"
          >
             <motion.div
                initial={{ opacity: 0, scale: 1.02 }}
@@ -222,11 +222,11 @@ export default function GIS() {
                   </div>
 
                   {/* KANAN: Peta */}
-                  <div className="flex-1 rounded-2xl overflow-hidden shadow-lg">
+                  <div className="flex-1 rounded-2xl overflow-hidden">
                      <MapContainer
                         center={[-5.15, 119.45]}
                         zoom={12}
-                        className="w-full h-full"
+                        className="w-full h-full max-h-[600px] z-0"
                         scrollWheelZoom
                      >
                         <TileLayer

@@ -11,6 +11,7 @@ import GISMap from "./components/ui/GISMap";
 import { motion } from "framer-motion";
 import { newsData } from "./data";
 import CultureCarousel from "./components/ui/CultureCarousel";
+import poster from "./assets/bg/event1.png";
 
 export default function Welcome() {
    const kapalRef = useRef<HTMLImageElement | null>(null);
@@ -89,7 +90,7 @@ export default function Welcome() {
       <>
          {/* Hero Section */}
          <section className="relative h-screen overflow-hidden bg-black">
-            <div className="absolute inset-0 bg-black/20 overflow-hidden" />
+            <div className="absolute inset-0 overflow-hidden z-50" />
 
             <CultureCarousel />
 
@@ -100,7 +101,7 @@ export default function Welcome() {
             </div>
          </section>
 
-         {awanList.map((awan, i) => (
+         {/* {awanList.map((awan, i) => (
             <img
                key={i}
                ref={(el) => {
@@ -110,11 +111,11 @@ export default function Welcome() {
                alt={`Awan ${i + 1}`}
                className={`absolute opacity-90 select-none z-50 ${awan.style}`}
             />
-         ))}
+         ))} */}
 
          {/* GIS */}
          <section className="relative bg-gray-900 text-white py-12">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto max-h-[800px]">
                <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">Peta GIS</h2>
                <GISMap />
             </div>
@@ -167,6 +168,27 @@ export default function Welcome() {
          <section className="relative bg-gray-900 text-white py-12">
             <div className="max-w-7xl mx-auto">
                <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">Event</h2>
+               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                  {[1, 2, 3, 4].map((i) => (
+                     <motion.div
+                        key={i}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                        className="rounded-2xl overflow-hiddentransition"
+                     >
+                        <div className="relative w-full aspect-[16/9]">
+                           <img
+                              src={poster}
+                              alt={`Event ${i}`}
+                              className="object-cover w-full h-full"
+                           />
+                        </div>
+                        <div className="p-3 bg-gray-900 text-gray-100 text-sm font-medium text-center">
+                           Event #{i}
+                        </div>
+                     </motion.div>
+                  ))}
+               </div>
             </div>
          </section>
       </>

@@ -8,7 +8,7 @@ export default function GIS() {
       {/* HERO SECTION */}
       <section
         id="hero"
-        className="relative flex flex-col items-center justify-center min-h-[40vh] overflow-hidden text-white"
+        className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-white"
       >
         <motion.div
           initial={{ opacity: 0, scale: 1.02 }}
