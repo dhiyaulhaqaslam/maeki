@@ -10,7 +10,7 @@ import wayang from "./assets/wayang.png";
 import wayangA from "./assets/wayangA.png";
 import GISMap from "./components/ui/GISMap";
 import CultureCarousel from "./components/ui/CultureCarousel";
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { newsData } from "./data";
 import poster from "./assets/bg/event1.png";
 
