@@ -1,10 +1,54 @@
+// src/components/Event.tsx
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import poster from "../assets/bg/event1.png";
+import event1 from "../assets/bg/event1.png";
 
 type CalendarValue = Date | [Date, Date] | null;
+
+const events = [
+  {
+    id: 1,
+    title: "Festival Budaya Nusantara",
+    description:
+      "Perayaan tahunan yang menampilkan kekayaan seni, musik, dan tarian tradisional dari berbagai daerah Indonesia.",
+    date: "12 November 2025",
+    time: "09:00 - 17:00 WIB",
+    location: "Lapangan Merdeka, Makassar",
+    image: event1,
+  },
+  {
+    id: 2,
+    title: "Pameran Batik dan Tenun Klasik",
+    description:
+      "Eksplorasi motif batik dan tenun khas Nusantara dengan sentuhan modern dan nilai filosofi budaya.",
+    date: "18 November 2025",
+    time: "10:00 - 20:00 WIB",
+    location: "Gedung Kesenian, Jakarta",
+    image: event1,
+  },
+  {
+    id: 3,
+    title: "Workshop Kuliner Tradisional",
+    description:
+      "Belajar membuat masakan khas daerah bersama chef lokal yang menjaga cita rasa asli Indonesia.",
+    date: "21 November 2025",
+    time: "13:00 - 15:00 WIB",
+    location: "UMKM Center, Bandung",
+    image: event1,
+  },
+  {
+    id: 4,
+    title: "Konser Musik Etnik Modern",
+    description:
+      "Perpaduan alat musik tradisional dan modern dalam konser yang mengangkat tema keanekaragaman budaya.",
+    date: "28 November 2025",
+    time: "19:00 - 22:00 WIB",
+    location: "Taman Budaya, Yogyakarta",
+    image: event1,
+  },
+];
 
 export default function Event() {
   const [date, setDate] = useState<CalendarValue>(new Date());
@@ -17,12 +61,12 @@ export default function Event() {
         className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-white"
       >
         <motion.div
-          initial={{ opacity: 0, scale: 1.02 }}
+          initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2400&q=80')] bg-cover bg-center opacity-40"
         />
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80" />
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -30,27 +74,28 @@ export default function Event() {
           transition={{ delay: 0.2, duration: 0.9 }}
           className="relative z-10 text-center px-6 py-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-2 text-white drop-shadow-lg">
-            Sistem Informasi Geospasial
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-3 tracking-wide drop-shadow-lg">
+            AGENDA BUDAYA
           </h1>
-          <p className="max-w-2xl mx-auto text-gray-200 text-lg drop-shadow">
-            Menelusuri kekayaan adat dan budaya melalui peta interaktif
-            yang menghubungkan masyarakat dengan warisan nusantara.
+          <p className="text-lg text-gray-200 max-w-2xl mx-auto">
+            Temukan berbagai acara budaya yang menginspirasi dan memperkaya
+            wawasan kebudayaan Nusantara.
           </p>
         </motion.div>
       </section>
 
       {/* EVENT CONTENT */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-7xl mx-auto grid gap-8 px-6">
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-6 grid gap-12">
           {/* GRID ATAS */}
           <div className="grid grid-cols-1 md:grid-cols-7 gap-6">
             {/* Calendar */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center md:col-span-3 border border-gray-200"
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center md:col-span-3 border border-gray-200"
             >
               <h2 className="text-lg font-semibold text-gray-800 mb-3">
                 Jadwal Acara
@@ -63,7 +108,7 @@ export default function Event() {
               {date && (
                 <p className="mt-4 text-gray-600 text-sm italic text-center">
                   Tanggal dipilih:{" "}
-                  <span className="font-semibold text-blue-600">
+                  <span className="font-semibold text-red-600">
                     {new Date(date as Date).toLocaleDateString("id-ID", {
                       day: "2-digit",
                       month: "long",
@@ -75,45 +120,170 @@ export default function Event() {
             </motion.div>
 
             {/* Poster utama */}
+            {/* Poster utama (REPLACE BLOCK) */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
-              className="md:col-span-4 bg-white rounded-xl overflow-hidden shadow-lg flex flex-col"
+              viewport={{ once: true }}
+              className="md:col-span-4 bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col"
             >
               <div className="relative w-full aspect-[16/9]">
-                <img
-                  src={poster}
-                  alt="Poster Event"
-                  className="object-cover w-full h-full"
+                {/* IMAGE: parallax / scale on hover */}
+                <motion.img
+                  src={event1}
+                  alt="Poster Event - Festival Budaya Nusantara"
+                  className="w-full h-full object-cover"
+                  initial={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.9, ease: "easeOut" }}
+                  style={{ transformOrigin: "center" }}
                 />
+
+                {/* VIGNETTE + GRADIENT untuk kontras */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,0,0,0.35),transparent_40%)]" />
+                </div>
+
+                {/* DECORATIVE LEFT ACCENT (motif garis tipis) */}
+                <svg
+                  className="absolute left-4 top-6 w-10 h-10 opacity-70"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden
+                >
+                  <path d="M2 12h20" stroke="#FCD34D" strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M6 6h12" stroke="#FCD34D" strokeWidth="0.9" strokeLinecap="round" opacity="0.9" />
+                </svg>
+
+                {/* DATE CHIP (top-left) */}
+                <div className="absolute top-4 left-4">
+                  <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-md text-gray-900 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M8 7V3M16 7V3M3 11h18M5 21h14a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z" stroke="#7C2D12" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    <span>{events[0].date}</span>
+                  </div>
+                </div>
+
+                {/* TITLE & META (bottom-left) */}
+                <div className="absolute left-6 bottom-6 right-6">
+                  <motion.h2
+                    initial={{ y: 12, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.15 }}
+                    className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white leading-tight drop-shadow-lg"
+                    style={{ textShadow: "0 6px 24px rgba(0,0,0,0.5)" }}
+                  >
+                    {events[0].title}
+                  </motion.h2>
+
+                  <motion.p
+                    initial={{ y: 8, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 0.95 }}
+                    transition={{ duration: 0.6, delay: 0.25 }}
+                    className="mt-3 text-sm md:text-base text-gray-100 max-w-xl"
+                  >
+                    {events[0].description}
+                  </motion.p>
+
+                  <div className="mt-4 flex flex-wrap items-center gap-3">
+                    <div className="inline-flex items-center gap-2 bg-white/10 text-white text-sm px-3 py-2 rounded-full backdrop-blur-sm">
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M12 7v5l3 3" stroke="#FFF" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                      <span className="font-medium">{events[0].time}</span>
+                    </div>
+
+                    <div className="inline-flex items-center gap-2 bg-white/10 text-white text-sm px-3 py-2 rounded-full backdrop-blur-sm">
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 6-9 11-9 11s-9-5-9-11a9 9 0 1 1 18 0z" stroke="#FFF" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                      <span className="font-medium">{events[0].location}</span>
+                    </div>
+
+                    {/* CTA */}
+                    <motion.button
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="ml-auto bg-gradient-to-r from-[#B91C1C] to-[#FB923C] text-white text-sm font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition"
+                    >
+                      Lihat Detail
+                    </motion.button>
+                  </div>
+                </div>
               </div>
-              <div className="p-4 bg-gray-800 flex flex-wrap justify-between items-center text-gray-100 font-medium text-sm md:text-base">
-                <p className="whitespace-nowrap">🕓 10:30 WIB – Selesai</p>
-                <p className="whitespace-nowrap">📍 123 Anywhere St., Any City</p>
+
+              {/* FOOTER INFO: subtle strip for quick glance */}
+              <div className="p-4 bg-white flex flex-wrap items-center justify-between gap-3 border-t border-gray-100">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-md bg-gradient-to-tr from-[#FDE68A] to-[#FCA311] flex items-center justify-center text-sm font-bold text-[#5C1A02]">
+                    {new Date(events[0].date).getDate() || "12"}
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-gray-800">{events[0].title}</div>
+                    <div className="text-xs text-gray-500">{events[0].location} · {events[0].time}</div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <button className="text-sm text-[#7C2D12] bg-[#FFFBEB] border border-[#FDE68A] px-3 py-1 rounded-full">Tambah ke Kalender</button>
+                  <button className="text-sm text-white bg-[#B91C1C] px-4 py-1.5 rounded-full">Daftar Sekarang</button>
+                </div>
               </div>
             </motion.div>
+
           </div>
 
-          {/* GRID BAWAH */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((i) => (
+          {/* GRID EVENT CARD */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-gray-800 text-center"
+          >
+            Acara Lainnya
+          </motion.h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {events.map((event, index) => (
               <motion.div
-                key={i}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-                className="rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-xl transition"
+                key={event.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.03 }}
+                className="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl group transition-all duration-500 border border-gray-100"
               >
-                <div className="relative w-full aspect-[16/9]">
-                  <img
-                    src={poster}
-                    alt={`Event ${i}`}
-                    className="object-cover w-full h-full"
+                <div className="relative h-48 overflow-hidden">
+                  <motion.img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                  <span className="absolute top-3 left-3 bg-white/80 backdrop-blur-md text-gray-800 text-xs font-semibold px-3 py-1 rounded-full">
+                    {event.date}
+                  </span>
                 </div>
-                <div className="p-3 bg-gray-900 text-gray-100 text-sm font-medium text-center">
-                  Event #{i}
+
+                <div className="p-5">
+                  <h3 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2">
+                    {event.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4 line-clamp-3 leading-relaxed">
+                    {event.description}
+                  </p>
+
+                  <div className="text-sm text-gray-500 space-y-1">
+                    <p>🕓 {event.time}</p>
+                    <p>📍 {event.location}</p>
+                  </div>
                 </div>
+
+                {/* Hover Border Animation */}
+                <motion.div
+                  layoutId={`event-border-${event.id}`}
+                  className="absolute inset-0 border-2 border-transparent group-hover:border-red-600 rounded-2xl transition-all duration-500"
+                />
               </motion.div>
             ))}
           </div>
