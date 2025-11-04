@@ -1,3 +1,4 @@
+// src/Welcome.tsx
 import { useEffect, useRef } from "react";
 import awan1 from "./assets/awan1.png";
 import awan2 from "./assets/awan2.png";
@@ -8,9 +9,9 @@ import awan6 from "./assets/awan6.png";
 import wayang from "./assets/wayang.png";
 import wayangA from "./assets/wayangA.png";
 import GISMap from "./components/ui/GISMap";
-import { motion } from "framer-motion";
-import { newsData } from "./data";
 import CultureCarousel from "./components/ui/CultureCarousel";
+import { motion, type Variants } from "framer-motion";
+import { newsData } from "./data";
 import poster from "./assets/bg/event1.png";
 
 export default function Welcome() {
@@ -18,54 +19,14 @@ export default function Welcome() {
    const awanRefs = useRef<(HTMLImageElement | null)[]>([]);
 
    const awanList = [
-      {
-         src: wayang,
-         style: "bottom-40 -right-50 w-[1000px]",
-         speed: 0.5,
-         direction: 1,
-      },
-      {
-         src: wayangA,
-         style: "bottom-40 right-0 w-[300px] z-0",
-         speed: 0.5,
-         direction: 1,
-      },
-      {
-         src: awan1,
-         style: "bottom-0 -left-20 w-[300px] z-10",
-         speed: 0.2,
-         direction: -2,
-      },
-      {
-         src: awan2,
-         style: "bottom-10 left-10 w-[400px] z-5",
-         speed: 0.25,
-         direction: -2,
-      },
-      {
-         src: awan3,
-         style: "bottom-20 -left-40 w-[600px]",
-         speed: 0.3,
-         direction: -2,
-      },
-      {
-         src: awan4,
-         style: "bottom-0 -right-20 w-[300px] z-10",
-         speed: 0.35,
-         direction: 2,
-      },
-      {
-         src: awan5,
-         style: "bottom-10 right-10 w-[400px] z-5",
-         speed: 0.4,
-         direction: 2,
-      },
-      {
-         src: awan6,
-         style: "bottom-20 -right-40 w-[600px]",
-         speed: 0.45,
-         direction: 2,
-      },
+      { src: wayang, style: "bottom-40 -right-50 w-[1000px]", speed: 0.5, direction: 1 },
+      { src: wayangA, style: "bottom-40 right-0 w-[300px] z-0", speed: 0.5, direction: 1 },
+      { src: awan1, style: "bottom-0 -left-20 w-[300px] z-10", speed: 0.2, direction: -2 },
+      { src: awan2, style: "bottom-10 left-10 w-[400px] z-5", speed: 0.25, direction: -2 },
+      { src: awan3, style: "bottom-20 -left-40 w-[600px]", speed: 0.3, direction: -2 },
+      { src: awan4, style: "bottom-0 -right-20 w-[300px] z-10", speed: 0.35, direction: 2 },
+      { src: awan5, style: "bottom-10 right-10 w-[400px] z-5", speed: 0.4, direction: 2 },
+      { src: awan6, style: "bottom-20 -right-40 w-[600px]", speed: 0.45, direction: 2 },
    ];
 
    useEffect(() => {
@@ -77,8 +38,7 @@ export default function Welcome() {
          awanRefs.current.forEach((el, i) => {
             if (!el) return;
             const { speed, direction } = awanList[i];
-            el.style.transform = `translateX(${scrollY * speed * direction
-               }px) translateY(${scrollY * speed}px)`;
+            el.style.transform = `translateX(${scrollY * speed * direction}px) translateY(${scrollY * speed}px)`;
          });
       };
 
@@ -86,44 +46,59 @@ export default function Welcome() {
       return () => window.removeEventListener("scroll", handleScroll);
    }, []);
 
+   // === ANIMASI TEKS HERO ===
+   const containerVariants: Variants = {
+      hidden: { opacity: 0 },
+      visible: {
+         opacity: 1,
+         transition: {
+            staggerChildren: 0.05,
+            delayChildren: 0.3,
+         },
+      },
+   };
+
+   const letterVariants: Variants = {
+      hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
+      visible: {
+         opacity: 1,
+         y: 0,
+         filter: "blur(0px)",
+         transition: { duration: 0.35, ease: "easeOut" as const },
+      },
+   };
+
+   const Hero = () => (
+      <section className="relative h-screen overflow-hidden">
+         {/* === Background Carousel === */}
+         <CultureCarousel />
+
+         {/* === Overlay Hitam Agar Tulisan Kontras === */}
+         <div className="absolute inset-0 z-0" />
+
+      </section>
+   );
+
    return (
       <>
-         {/* Hero Section */}
-         <section className="relative h-screen overflow-hidden bg-black">
-            <div className="absolute inset-0 overflow-hidden z-50" />
-
-            <CultureCarousel />
-
-            <div className="relative flex h-full flex-col items-center justify-center text-white">
-               <h1 className="z-10 text-center text-5xl font-bold drop-shadow-lg md:text-6xl">
-                  Ini Section Hero
-               </h1>
-            </div>
-         </section>
-
-         {/* {awanList.map((awan, i) => (
-            <img
-               key={i}
-               ref={(el) => {
-                  awanRefs.current[i] = el;
-               }}
-               src={awan.src}
-               alt={`Awan ${i + 1}`}
-               className={`absolute opacity-90 select-none z-50 ${awan.style}`}
-            />
-         ))} */}
+         <Hero />
 
          {/* GIS */}
          <section className="relative bg-gray-900 text-white py-12">
             <div className="max-w-7xl mx-auto max-h-[800px]">
-               <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">Peta GIS</h2>
+               <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
+                  Peta GIS
+               </h2>
                <GISMap />
             </div>
          </section>
 
+         {/* NEWS */}
          <section className="relative bg-gray-900 text-white py-12">
             <div className="max-w-7xl mx-auto">
-               <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">News</h2>
+               <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
+                  News
+               </h2>
                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                   {newsData.map((news) => (
                      <motion.div
@@ -143,11 +118,9 @@ export default function Welcome() {
                            <h3 className="text-lg font-semibold text-gray-800 mb-1">
                               {news.title}
                            </h3>
-
                            <p className="text-sm text-gray-600 mb-3 line-clamp-3">
                               {news.description}
                            </p>
-
                            <a
                               href="#"
                               className="text-blue-600 text-sm font-medium hover:underline"
@@ -167,14 +140,16 @@ export default function Welcome() {
          {/* EVENT */}
          <section className="relative bg-gray-900 text-white py-12">
             <div className="max-w-7xl mx-auto">
-               <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">Event</h2>
+               <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
+                  Event
+               </h2>
                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {[1, 2, 3, 4].map((i) => (
                      <motion.div
                         key={i}
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.3 }}
-                        className="rounded-2xl overflow-hiddentransition"
+                        className="rounded-2xl overflow-hidden transition"
                      >
                         <div className="relative w-full aspect-[16/9]">
                            <img

@@ -1,17 +1,24 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import logo from "../assets/maeki-logo.png"
+import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/maeki-logo.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation(); // ✅ untuk deteksi halaman aktif
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Fungsi untuk memberi style active
+  const isActive = (path: string) =>
+    location.pathname === path
+      ? "text-[#9C1D2A] underline underline-offset-8 decoration-2"
+      : "hover:text-[#9C1D2A] transition";
 
   return (
     <motion.nav
@@ -24,21 +31,21 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 text-white">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold tracking-wide">
-          <img src={logo} alt="" />
+          <img src={logo} alt="Maeki logo" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop Nav — Ditaruh di Tengah */}
         <div className="hidden md:flex gap-8 font-medium absolute left-1/2 -translate-x-1/2">
-          <Link to="/" className="hover:text-[#9C1D2A] transition">
+          <Link to="/" className={isActive("/")}>
             Beranda
           </Link>
-          <Link to="/GIS" className="hover:text-[#9C1D2A] transition">
+          <Link to="/GIS" className={isActive("/GIS")}>
             GIS
           </Link>
-          <Link to="/news" className="hover:text-[#9C1D2A] transition">
+          <Link to="/news" className={isActive("/news")}>
             News
           </Link>
-          <Link to="/event" className="hover:text-[#9C1D2A] transition">
+          <Link to="/event" className={isActive("/event")}>
             Event
           </Link>
         </div>
@@ -89,19 +96,37 @@ export default function Navbar() {
           exit={{ opacity: 0, y: -10 }}
           className="md:hidden bg-black/80 backdrop-blur-md text-center text-white py-4 space-y-3"
         >
-          <Link to="/" onClick={() => setMenuOpen(false)} className="block">
+          <Link
+            to="/"
+            onClick={() => setMenuOpen(false)}
+            className={isActive("/")}
+          >
             Beranda
           </Link>
-          <Link to="/GIS" onClick={() => setMenuOpen(false)} className="block">
+          <Link
+            to="/GIS"
+            onClick={() => setMenuOpen(false)}
+            className={isActive("/GIS")}
+          >
             GIS
           </Link>
-          <Link to="/news" onClick={() => setMenuOpen(false)} className="block">
+          <Link
+            to="/news"
+            onClick={() => setMenuOpen(false)}
+            className={isActive("/news")}
+          >
             News
           </Link>
-          <Link to="/event" onClick={() => setMenuOpen(false)} className="block">
+          <Link
+            to="/event"
+            onClick={() => setMenuOpen(false)}
+            className={isActive("/event")}
+          >
             Event
           </Link>
+
           <hr className="border-gray-600 w-2/3 mx-auto my-3" />
+
           <Link
             to="/login"
             onClick={() => setMenuOpen(false)}
