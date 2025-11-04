@@ -64,7 +64,7 @@ export default function Welcome() {
          <Hero />
 
          {/* GIS */}
-         <section className="relative bg-gray-900 text-white py-12">
+         <section className="relative text-[#9C1D2A] py-12">
             <div className="max-w-7xl mx-auto max-h-[800px]">
                <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
                   Peta GIS
@@ -74,7 +74,7 @@ export default function Welcome() {
          </section>
 
          {/* NEWS */}
-         <section className="relative bg-gray-900 text-white py-12">
+         <section className="relative text-[#9C1D2A] py-12">
             <div className="max-w-7xl mx-auto">
                <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
                   News
@@ -118,7 +118,7 @@ export default function Welcome() {
          </section>
 
          {/* EVENT */}
-         <section className="relative bg-gray-900 text-white py-12">
+         <section className="relative text-[#9C1D2A] py-12">
             <div className="max-w-7xl mx-auto">
                <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
                   Event
