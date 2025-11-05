@@ -132,7 +132,7 @@ export default function CultureCarousel() {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Navigasi manual (bulatan) */}
+            {/* Navigasi manual (bulatan)
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
                 {images.map((_, i) => (
                     <button
@@ -144,7 +144,7 @@ export default function CultureCarousel() {
                             }`}
                     />
                 ))}
-            </div>
+            </div> */}
 
             {/* Overlay gradasi atas-bawah */}
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/30 via-black/40 to-black/80" />
