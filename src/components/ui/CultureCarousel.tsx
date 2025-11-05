@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import borobudur from "../../assets/bg/borobudur.png";
+// import borobudur from "../../assets/bg/borobudur.png";
 import prambanan from "../../assets/bg/prambanan.png";
 import tongkonan from "../../assets/bg/Tongkonan.png";
 import honai from "../../assets/bg/honai.png";
