@@ -8,10 +8,7 @@ import awan5 from "./assets/awan5.png";
 import awan6 from "./assets/awan6.png";
 import wayang from "./assets/wayang.png";
 import wayangA from "./assets/wayangA.png";
-import GISMap from "./components/ui/GISMap";
 import CultureCarousel from "./components/ui/CultureCarousel";
-import NewsCard from "./components/ui/NewsCard";
-import EventCard from "./components/ui/EventCard";
 
 export default function Welcome() {
    const kapalRef = useRef<HTMLImageElement | null>(null);

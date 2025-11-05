@@ -7,13 +7,19 @@ import tongkonan from "../../assets/bg/Tongkonan.png";
 import honai from "../../assets/bg/honai.png";
 import ulundanu from "../../assets/bg/ulundanu.png";
 import bolon from "../../assets/bg/bolon.png";
+import rotterdam from "../../assets/benteng rotterdam.png";
 
 const images = [
     {
-        src: borobudur,
-        title: "Candi Borobudur",
-        desc: "Warisan dunia yang menjadi simbol kemegahan dan spiritualitas Nusantara.",
+        src: rotterdam,
+        title: "Benteng Fort Rotterdam",
+        desc: "Benteng Fort Rotterdam adalah peninggalan sejarah dari Kerajaan Gowa yang kemudian diambil alih oleh Belanda pada abad ke-17",
     },
+    // {
+    //     src: borobudur,
+    //     title: "Candi Borobudur",
+    //     desc: "Warisan dunia yang menjadi simbol kemegahan dan spiritualitas Nusantara.",
+    // },
     {
         src: prambanan,
         title: "Candi Prambanan",
@@ -61,7 +67,7 @@ export default function CultureCarousel() {
     useEffect(() => {
         const timer = setInterval(() => {
             setIndex((prev) => (prev + 1) % images.length);
-        }, 6000);
+        }, 12000);
         return () => clearInterval(timer);
     }, []);
 
@@ -132,8 +138,8 @@ export default function CultureCarousel() {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Navigasi manual (bulatan)
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+            Navigasi manual (bulatan)
+            <div className="absolute bottom-10 left-100 -translate-x-1/2 flex gap-3 z-20">
                 {images.map((_, i) => (
                     <button
                         key={i}
@@ -144,7 +150,7 @@ export default function CultureCarousel() {
                             }`}
                     />
                 ))}
-            </div> */}
+            </div>
 
             {/* Overlay gradasi atas-bawah */}
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/30 via-black/40 to-black/80" />

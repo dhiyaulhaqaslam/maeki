@@ -3,15 +3,16 @@ import { NavLink } from "react-router-dom";
 
 export default function BottomNav() {
     const base =
-        "flex flex-col items-center text-xs transition-all font-medium select-none";
+        "flex flex-col items-center transition-all font-medium select-none";
 
     return (
         <div
             className="
-      fixed bottom-6 left-1/2 -translate-x-1/2 z-50
-      flex gap-8 sm:gap-12
-      bg-transparent
-    "
+        fixed bottom-[clamp(6px,1.4vw,20px)] left-1/2 -translate-x-1/2 z-50
+        flex
+        gap-[clamp(10px,2.5vw,28px)]
+        bg-transparent
+      "
         >
             {/* HOME */}
             <NavLink
@@ -24,17 +25,22 @@ export default function BottomNav() {
                     <>
                         <div
                             className={`
-              rounded-full transition-all flex items-center justify-center
-              p-4 sm:p-5
-              ${isActive
-                                    ? "bg-yellow-300/30 scale-110 shadow-[0_0_25px_rgba(255,255,0,0.6)]"
-                                    : "bg-white/10 hover:bg-white/20 hover:scale-105"
+                rounded-full transition-all flex items-center justify-center
+                p-[clamp(6px,1.4vw,14px)]
+                ${isActive
+                                    ? "bg-[#9C1D2A] scale-105 shadow-[0_0_12px_rgba(255,200,0,0.45)]"
+                                    : "bg-black/25 hover:bg-white/15 hover:scale-105"
                                 }
-            `}
+              `}
+                            style={{ minWidth: "32px", minHeight: "32px" }}
                         >
-                            <Home className="w-7 h-7 sm:w-10 sm:h-10" />
+                            <Home
+                                className="w-[clamp(14px,2.4vw,30px)] h-[clamp(14px,2.4vw,30px)]"
+                            />
                         </div>
-                        <span className="mt-1 sm:text-sm">Home</span>
+                        <span className="mt-[2px] text-[clamp(8px,1.6vw,12px)] text-[#9C1D2A]">
+                            Home
+                        </span>
                     </>
                 )}
             </NavLink>
@@ -50,17 +56,22 @@ export default function BottomNav() {
                     <>
                         <div
                             className={`
-              rounded-full transition-all flex items-center justify-center
-              p-4 sm:p-5
-              ${isActive
-                                    ? "bg-yellow-300/30 scale-110 shadow-[0_0_25px_rgba(255,255,0,0.6)]"
-                                    : "bg-white/10 hover:bg-white/20 hover:scale-105"
+                rounded-full transition-all flex items-center justify-center
+                p-[clamp(6px,1.4vw,14px)]
+                ${isActive
+                                    ? "bg-[#9C1D2A] scale-105 shadow-[0_0_12px_rgba(255,200,0,0.45)]"
+                                    : "bg-black/25 hover:bg-white/15 hover:scale-105"
                                 }
-            `}
+              `}
+                            style={{ minWidth: "32px", minHeight: "32px" }}
                         >
-                            <Map className="w-7 h-7 sm:w-10 sm:h-10" />
+                            <Map
+                                className="w-[clamp(14px,2.4vw,30px)] h-[clamp(14px,2.4vw,30px)]"
+                            />
                         </div>
-                        <span className="mt-1 sm:text-sm">GIS</span>
+                        <span className="mt-[2px] text-[clamp(8px,1.6vw,12px)] text-[#9C1D2A]">
+                            GIS
+                        </span>
                     </>
                 )}
             </NavLink>
@@ -76,17 +87,22 @@ export default function BottomNav() {
                     <>
                         <div
                             className={`
-              rounded-full transition-all flex items-center justify-center
-              p-4 sm:p-5
-              ${isActive
-                                    ? "bg-yellow-300/30 scale-110 shadow-[0_0_25px_rgba(255,255,0,0.6)]"
-                                    : "bg-white/10 hover:bg-white/20 hover:scale-105"
+                rounded-full transition-all flex items-center justify-center
+                p-[clamp(6px,1.4vw,14px)]
+                ${isActive
+                                    ? "bg-[#9C1D2A] scale-105 shadow-[0_0_12px_rgba(255,200,0,0.45)]"
+                                    : "bg-black/25 hover:bg-white/15 hover:scale-105"
                                 }
-            `}
+              `}
+                            style={{ minWidth: "32px", minHeight: "32px" }}
                         >
-                            <Newspaper className="w-7 h-7 sm:w-10 sm:h-10" />
+                            <Newspaper
+                                className="w-[clamp(14px,2.4vw,30px)] h-[clamp(14px,2.4vw,30px)]"
+                            />
                         </div>
-                        <span className="mt-1 sm:text-sm">News</span>
+                        <span className="mt-[2px] text-[clamp(8px,1.6vw,12px)] text-[#9C1D2A]">
+                            News
+                        </span>
                     </>
                 )}
             </NavLink>
@@ -102,17 +118,22 @@ export default function BottomNav() {
                     <>
                         <div
                             className={`
-              rounded-full transition-all flex items-center justify-center
-              p-4 sm:p-5
-              ${isActive
-                                    ? "bg-yellow-300/30 scale-110 shadow-[0_0_25px_rgba(255,255,0,0.6)]"
-                                    : "bg-white/10 hover:bg-white/20 hover:scale-105"
+                rounded-full transition-all flex items-center justify-center
+                p-[clamp(6px,1.4vw,14px)]
+                ${isActive
+                                    ? "bg-[#9C1D2A] scale-105 shadow-[0_0_12px_rgba(255,200,0,0.45)]"
+                                    : "bg-black/25 hover:bg-white/15 hover:scale-105"
                                 }
-            `}
+              `}
+                            style={{ minWidth: "32px", minHeight: "32px" }}
                         >
-                            <Calendar className="w-7 h-7 sm:w-10 sm:h-10" />
+                            <Calendar
+                                className="w-[clamp(14px,2.4vw,30px)] h-[clamp(14px,2.4vw,30px)]"
+                            />
                         </div>
-                        <span className="mt-1 sm:text-sm">Event</span>
+                        <span className="mt-[2px] text-[clamp(8px,1.6vw,12px)] text-[#9C1D2A]">
+                            Event
+                        </span>
                     </>
                 )}
             </NavLink>

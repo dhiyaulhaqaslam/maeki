@@ -25,30 +25,13 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? "backdrop-blur-md bg-black/30 shadow-lg" : "bg-transparent"
-        }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-black/30 shadow-lg"`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 text-white">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold tracking-wide">
           <img src={logo} alt="Maeki logo" className="h-10 w-auto" />
         </Link>
-
-        {/* Desktop Nav — Ditaruh di Tengah */}
-        <div className="hidden md:flex gap-8 font-medium absolute left-1/2 -translate-x-1/2">
-          <Link to="/" className={isActive("/")}>
-            Beranda
-          </Link>
-          <Link to="/GIS" className={isActive("/GIS")}>
-            GIS
-          </Link>
-          <Link to="/news" className={isActive("/news")}>
-            News
-          </Link>
-          <Link to="/event" className={isActive("/event")}>
-            Event
-          </Link>
-        </div>
 
         {/* Tombol Login & Register */}
         <div className="hidden md:flex items-center gap-4">
