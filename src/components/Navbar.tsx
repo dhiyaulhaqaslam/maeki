@@ -94,7 +94,7 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="md:hidden flex flex-col items-center text-white py-6 space-y-4 shadow-lg"
+          className={`md:hidden flex flex-col items-center text-white py-6 space-y-4 shadow-lg ${scrolled ? "bg-transparent" : "backdrop-blur-md bg-black/30 shadow-lg"}`}
         >
           <Link
             to="/"
