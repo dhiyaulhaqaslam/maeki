@@ -69,7 +69,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden focus:outline-none"
+          className="md:hidden focus:outline-none hover:cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -94,50 +94,50 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="md:hidden bg-black/80 backdrop-blur-md text-center text-white py-4 space-y-3"
+          className="md:hidden flex flex-col items-center text-white py-6 space-y-4 shadow-lg"
         >
           <Link
             to="/"
             onClick={() => setMenuOpen(false)}
-            className={isActive("/")}
+            className={`${isActive("/")} block text-lg font-medium`}
           >
             Beranda
           </Link>
           <Link
             to="/GIS"
             onClick={() => setMenuOpen(false)}
-            className={isActive("/GIS")}
+            className={`${isActive("/GIS")} block text-lg font-medium`}
           >
             GIS
           </Link>
           <Link
             to="/news"
             onClick={() => setMenuOpen(false)}
-            className={isActive("/news")}
+            className={`${isActive("/news")} block text-lg font-medium`}
           >
             News
           </Link>
           <Link
             to="/event"
             onClick={() => setMenuOpen(false)}
-            className={isActive("/event")}
+            className={`${isActive("/event")} block text-lg font-medium`}
           >
             Event
           </Link>
 
-          <hr className="border-gray-600 w-2/3 mx-auto my-3" />
+          <hr className="border-[#9C1D2A] w-3/4 mx-auto my-3" />
 
           <Link
             to="/login"
             onClick={() => setMenuOpen(false)}
-            className="block text-[#9C1D2A]"
+            className="block w-3/4 text-center py-2 rounded-md bg-[#9C1D2A] text-white font-medium hover:bg-[#9C1D2A]/80 transition"
           >
             Login
           </Link>
           <Link
             to="/register"
             onClick={() => setMenuOpen(false)}
-            className="block text-[#9C1D2A] font-semibold"
+            className="block w-3/4 text-center py-2 rounded-md border border-[#9C1D2A] text-[#9C1D2A] font-semibold hover:bg-[#9C1D2A] hover:text-white transition"
           >
             Register
           </Link>
