@@ -92,7 +92,7 @@ export default function CultureCarousel() {
                 >
                     {/* Judul huruf demi huruf */}
                     <motion.h1
-                        className="font-bold text-5xl md:text-[100px] drop-shadow-2xl leading-tight tracking-tight"
+                        className="font-bold text-5xl md:text-[60px] drop-shadow-2xl leading-tight tracking-tight"
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
@@ -125,7 +125,7 @@ export default function CultureCarousel() {
                             filter: "blur(0px)",
                             transition: { delay: 1.8, duration: 1 },
                         }}
-                        className="mt-8 text-lg md:text-2xl text-gray-200 tracking-wide max-w-2xl drop-shadow-md"
+                        className="mt-8 text-lg md:text-[16px] text-gray-200 tracking-wide max-w-2xl drop-shadow-md"
                     >
                         {images[index].desc}
                     </motion.p>

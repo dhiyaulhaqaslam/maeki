@@ -61,36 +61,6 @@ export default function Welcome() {
    return (
       <>
          <Hero />
-
-         {/* GIS */}
-         <section className="relative text-[#9C1D2A] py-12 mx-4">
-            <div className="max-w-7xl mx-auto max-h-[800px]">
-               <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
-                  Peta GIS
-               </h2>
-               <GISMap />
-            </div>
-         </section>
-
-         {/* NEWS */}
-         <section className="relative text-[#9C1D2A] py-12 mx-4">
-            <div className="max-w-7xl mx-auto">
-               <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
-                  News
-               </h2>
-               <NewsCard />
-            </div>
-         </section>
-
-         {/* EVENT */}
-         <section className="relative text-[#9C1D2A] py-12 mx-4">
-            <div className="max-w-7xl mx-auto">
-               <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
-                  Event
-               </h2>
-               <EventCard />
-            </div>
-         </section>
       </>
    );
 }

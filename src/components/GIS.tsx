@@ -99,104 +99,7 @@ export default function GIS() {
                {/* --- ganti blok lama dengan ini --- */}
                <div className="flex gap-8 rounded-2xl overflow-hidden h-[70vh]">
                   {/* KIRI: dua kotak terpisah (stacked) */}
-                  <div className="flex flex-col gap-4 w-[28%]">
-                     {/* Kotak 1: Cari Status */}
-                     <div className="bg-[#D9D9D9] p-6 rounded-2xl">
-                        <h3 className="text-center font-semibold text-black mb-4">
-                           Cari Status
-                        </h3>
 
-                        <div className="grid gap-3">
-                           <input
-                              type="text"
-                              placeholder="Cari Situs..."
-                              className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
-                           />
-
-                           <select
-                              className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
-                              defaultValue=""
-                           >
-                              <option value="" disabled>
-                                 Pilih Provinsi
-                              </option>
-                              <option value="Sulawesi Selatan">
-                                 Sulawesi Selatan
-                              </option>
-                              <option value="Jawa Barat">Jawa Barat</option>
-                              <option value="Bali">Bali</option>
-                           </select>
-
-                           <select
-                              className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
-                              defaultValue=""
-                           >
-                              <option value="" disabled>
-                                 Pilih Kabupaten / Kota
-                              </option>
-                              <option value="Makassar">Makassar</option>
-                              <option value="Gowa">Gowa</option>
-                              <option value="Maros">Maros</option>
-                           </select>
-
-                           <select
-                              className="bg-white text-black px-4 w-full py-3 rounded-2xl focus:ring-2 focus:ring-[#9C1D2A] outline-none"
-                              defaultValue=""
-                           >
-                              <option value="" disabled>
-                                 Pilih Jenis Titik Kebudayaan
-                              </option>
-                              <option value="Museum">Museum</option>
-                              <option value="Cagar Budaya">Cagar Budaya</option>
-                              <option value="WBTB">WBTB</option>
-                              <option value="Komunitas Budaya">
-                                 Komunitas Budaya
-                              </option>
-                           </select>
-
-                           <button className="bg-[#9C1D2A] w-full py-3 rounded-2xl text-white font-semibold hover:bg-[#7e1721] transition-all">
-                              Cari
-                           </button>
-                        </div>
-                     </div>
-
-                     {/* Kotak 2: Statistik Data (terpisah) */}
-                     <div className="bg-[#D9D9D9] p-6 rounded-2xl shadow-md">
-                        <h4 className="text-center text-lg font-semibold text-black mb-4">
-                           Statistik Data
-                        </h4>
-
-                        <div className="grid gap-3">
-                           <div className="flex justify-between items-center border-b pb-2" text-white>
-                              <span className="text-black font-medium">
-                                 Jumlah Provinsi
-                              </span>
-                              <span className="font-bold text-black">
-                                 34
-                              </span>
-                           </div>
-
-                           <div className="flex justify-between items-center border-b pb-2">
-                              <span className="text-black font-medium">
-                                 Jumlah Kabupaten/Kota
-                              </span>
-                              <span className="font-bold text-black">
-                                 514
-                              </span>
-                           </div>
-
-                           {/* contoh tambahan metrik (opsional) */}
-                           <div className="flex justify-between items-center pt-2">
-                              <span className="text-black font-medium">
-                                 Total Titik Budaya
-                              </span>
-                              <span className="font-bold text-black">
-                                 200
-                              </span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
 
                   {/* KANAN: Peta */}
                   <div className="flex-1 rounded-2xl overflow-hidden">
@@ -209,23 +112,7 @@ export default function GIS() {
          {/* ABOUT SECTION */}
          <section className="relative py-20 bg-black text-gray-200">
             <div className="max-w-6xl mx-auto px-6 text-center">
-               <motion.h2
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1 }}
-                  className="text-4xl font-semibold mb-6 text-yellow-400"
-               >
-                  Tentang Halaman GIS
-               </motion.h2>
-               <motion.p
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 1 }}
-                  className="max-w-3xl mx-auto text-lg text-gray-400 leading-relaxed"
-               >
-                  Halaman ini menampilkan batas wilayah dari dataset GeoJSON.
-                  Klik tiap wilayah untuk melihat nama kelurahan atau kecamatan.
-               </motion.p>
+
             </div>
          </section>
       </>

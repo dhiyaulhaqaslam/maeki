@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import GlobalCursorEffect from "../components/ui/GlobalCursorEffect";
+import BottomNav from "../components/BottomNav";
 
 interface MainLayoutProps {
    children: ReactNode;
@@ -10,6 +11,9 @@ interface MainLayoutProps {
 export default function MainLayout({ children }: MainLayoutProps) {
    return (
       <>
+         {/* Efek cahaya global */}
+         <GlobalCursorEffect />
+
          {/* Navbar fixed di atas */}
          <Navbar />
 
@@ -20,11 +24,12 @@ export default function MainLayout({ children }: MainLayoutProps) {
             transition={{ duration: 0.6 }}
             className="min-h-screen text-white overflow-x-hidden"
          >
-            {children}  
+            {children}
          </motion.main>
 
          {/* Footer di bawah */}
-         <Footer />
+         <BottomNav />
+
       </>
    );
 }

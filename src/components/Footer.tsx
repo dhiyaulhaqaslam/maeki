@@ -15,37 +15,6 @@ export default function Footer() {
                 {/* Ornamen garis batik */}
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-yellow-500 via-red-600 to-yellow-500 animate-pulse" />
 
-                <div className="mx-auto max-w-6xl px-6 space-y-8">
-                    <p className="mx-auto max-w-xl text-sm md:text-base text-gray-400 italic">
-                        "Menjaga warisan, menenun masa depan."
-                        <span className="text-yellow-400"> — Maeki Nusantara</span>
-                    </p>
-
-                    {/* Sosial Media */}
-                    <div className="flex justify-center gap-8 text-2xl">
-                        <a href="#" className="transition hover:text-yellow-400">
-                            <i className="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="#" className="transition hover:text-yellow-400">
-                            <i className="fa-brands fa-x-twitter"></i>
-                        </a>
-                        <a href="#" className="transition hover:text-yellow-400">
-                            <i className="fa-brands fa-github"></i>
-                        </a>
-                        <a href="#" className="transition hover:text-yellow-400">
-                            <i className="fa-brands fa-youtube"></i>
-                        </a>
-                    </div>
-
-                    {/* Copyright */}
-                    <p className="text-xs text-gray-500 tracking-wide">
-                        © {new Date().getFullYear()}{" "}
-                        <span className="font-bold text-yellow-400">Mae</span>ki. Dibuat
-                        dengan <span className="text-red-500">❤️</span> & semangat budaya
-                        Indonesia.
-                    </p>
-                </div>
-
                 {/* Ornamen bawah */}
                 <motion.div
                     animate={{ opacity: [0.5, 1, 0.5] }}
