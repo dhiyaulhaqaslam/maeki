@@ -1998,6 +1998,51 @@ export const makassar = [
    },
 ];
 
+import event1 from "./assets/bg/event1.png";
+
+export const events = [
+  {
+    id: 1,
+    title: "Festival Budaya Nusantara",
+    description:
+      "Perayaan tahunan yang menampilkan kekayaan seni, musik, dan tarian tradisional dari berbagai daerah Indonesia.",
+    date: "12 November 2025",
+    time: "09:00 - 17:00 WIB",
+    location: "Lapangan Merdeka, Makassar",
+    image: event1,
+  },
+  {
+    id: 2,
+    title: "Pameran Batik dan Tenun Klasik",
+    description:
+      "Eksplorasi motif batik dan tenun khas Nusantara dengan sentuhan modern dan nilai filosofi budaya.",
+    date: "18 November 2025",
+    time: "10:00 - 20:00 WIB",
+    location: "Gedung Kesenian, Jakarta",
+    image: event1,
+  },
+  {
+    id: 3,
+    title: "Workshop Kuliner Tradisional",
+    description:
+      "Belajar membuat masakan khas daerah bersama chef lokal yang menjaga cita rasa asli Indonesia.",
+    date: "21 November 2025",
+    time: "13:00 - 15:00 WIB",
+    location: "UMKM Center, Bandung",
+    image: event1,
+  },
+  {
+    id: 4,
+    title: "Konser Musik Etnik Modern",
+    description:
+      "Perpaduan alat musik tradisional dan modern dalam konser yang mengangkat tema keanekaragaman budaya.",
+    date: "28 November 2025",
+    time: "19:00 - 22:00 WIB",
+    location: "Taman Budaya, Yogyakarta",
+    image: event1,
+  },
+];
+
 export const newsData = [
     {
       id: 1,

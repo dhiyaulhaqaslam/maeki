@@ -10,9 +10,8 @@ import wayang from "./assets/wayang.png";
 import wayangA from "./assets/wayangA.png";
 import GISMap from "./components/ui/GISMap";
 import CultureCarousel from "./components/ui/CultureCarousel";
-import { motion } from "framer-motion";
-import poster from "./assets/bg/event1.png";
 import NewsCard from "./components/ui/NewsCard";
+import EventCard from "./components/ui/EventCard";
 
 export default function Welcome() {
    const kapalRef = useRef<HTMLImageElement | null>(null);
@@ -89,27 +88,7 @@ export default function Welcome() {
                <h2 className="text-5xl text-center font-bold my-6 py-6 bg-white/5">
                   Event
                </h2>
-               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                  {[1, 2, 3, 4].map((i) => (
-                     <motion.div
-                        key={i}
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.3 }}
-                        className="rounded-2xl overflow-hidden transition"
-                     >
-                        <div className="relative w-full aspect-video">
-                           <img
-                              src={poster}
-                              alt={`Event ${i}`}
-                              className="object-cover w-full h-full"
-                           />
-                        </div>
-                        <div className="p-3 bg-gray-900 text-gray-100 text-sm font-medium text-center">
-                           Event #{i}
-                        </div>
-                     </motion.div>
-                  ))}
-               </div>
+               <EventCard />
             </div>
          </section>
       </>
